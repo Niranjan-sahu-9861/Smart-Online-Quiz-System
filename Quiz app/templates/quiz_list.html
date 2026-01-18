@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="max-width:800px; margin:40px auto; text-align:left;">
+  <h2>Available Quizzes</h2>
+
+  {% if not quizzes %}
+    <p>No quizzes currently available. Admin can create one.</p>
+  {% else %}
+    {% for q in quizzes %}
+      <div style="background:#0b1220; padding:12px; margin:10px 0; border-radius:8px;">
+        <strong>{{ q[1] }}</strong> — Time: {{ q[2] }} sec
+        <div style="margin-top:8px;">
+          <a href="/take/{{ q[0] }}"><button class="btn-3d">Start Quiz</button></a>
+        </div>
+      </div>
+    {% endfor %}
+  {% endif %}
+</div>
+{% endblock %}

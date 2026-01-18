@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+<h2>Dashboard ({{ role }})</h2>
+
+{% if role == "admin" %}
+<a href="/create_quiz"><button class="btn-3d">Create Quiz</button></a>
+{% endif %}
+
+<a href="/quizzes"><button class="btn-3d">View Quizzes</button></a>
+<a href="/logout"><button class="btn-3d">Logout</button></a>
+</div>
+{% endblock %}

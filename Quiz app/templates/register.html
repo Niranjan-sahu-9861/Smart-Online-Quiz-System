@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container" style="max-width:420px; margin:60px auto; text-align:left;">
+
+<h2>Register</h2>
+
+<form action="{{ url_for('register') }}" method="POST" onsubmit="return validateRegister()">
+
+    <input type="text" id="regUser" name="username" placeholder="Enter Username" required>
+    <input type="password" id="regPass" name="password" placeholder="Enter Password" required>
+
+    <button type="submit">Register</button>
+</form>
+
+<br>
+
+<a href="{{ url_for('landing') }}">
+  <button class="btn-3d">Back</button>
+</a>
+
+</div>
+
+<script>
+function validateRegister(){
+  const u = document.getElementById('regUser').value.trim();
+  const p = document.getElementById('regPass').value;
+
+  if(u.length < 4){
+    alert('Username must be at least 4 characters');
+    return false;
+  }
+  if(p.length < 6){
+    alert('Password must be at least 6 characters');
+    return false;
+  }
+  return true;
+}
+</script>
+
+{% endblock %}

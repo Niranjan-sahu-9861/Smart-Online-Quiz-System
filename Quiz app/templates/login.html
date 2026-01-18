@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="max-width:420px; margin:60px auto; text-align:left;">
+  <h2>Login</h2>
+
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for cat, msg in messages %}
+        <div style="padding:8px; margin:6px 0; border-radius:6px; background:#f8d7da; color:#721c24;">{{ msg }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <form action="/do_login" method="post" onsubmit="return validateLogin();">
+    <input name="username" id="loginUser" placeholder="Username" required minlength="4" style="width:100%; padding:8px;"><br><br>
+    <input type="password" name="password" id="loginPass" placeholder="Password" required minlength="6" style="width:100%; padding:8px;"><br><br>
+    <button class="btn-3d" type="submit">Login</button>
+  </form>
+
+  <hr style="margin:18px 0;">
+
+  <h3>Register</h3>
+  <form action="/register" method="post" onsubmit="return validateRegister();">
+    <input name="username" id="regUser" placeholder="New Username (min 4)" required minlength="4" style="width:100%; padding:8px;"><br><br>
+    <input type="password" name="password" id="regPass" placeholder="Password (min 6)" required minlength="6" style="width:100%; padding:8px;"><br><br>
+    <select name="role" style="width:100%; padding:8px;">
+      <option value="student">Student</option>
+      <option value="admin">Admin</option>
+    </select><br><br>
+    <button class="btn-3d" type="submit">Register</button>
+  </form>
+  
+  <br>
+<a href="/"><button class="btn-3d">Back</button></a>
+
+</div>
+
+
+<script>
+function validateRegister(){
+  const u = document.getElementById('regUser').value.trim();
+  const p = document.getElementById('regPass').value;
+  if(u.length < 4){ alert('Username must be at least 4 chars'); return false; }
+  if(p.length < 6){ alert('Password must be at least 6 chars'); return false; }
+  return true;
+}
+function validateLogin(){
+  const u = document.getElementById('loginUser').value.trim();
+  const p = document.getElementById('loginPass').value;
+  if(u.length < 4 || p.length < 6){ alert('Please enter valid credentials'); return false; }
+  return true;
+}
+</script>
+{% endblock %}

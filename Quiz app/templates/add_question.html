@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container" style="max-width:680px; margin:60px auto; text-align:left;">
+  <h2>Add Question to Quiz #{{ quiz_id }}</h2>
+  <form method="post">
+    <textarea name="text" placeholder="Question text" required style="width:100%; padding:8px; height:80px;"></textarea><br><br>
+    <input name="opt1" placeholder="Option 1" required style="width:100%; padding:8px;"><br><br>
+    <input name="opt2" placeholder="Option 2" required style="width:100%; padding:8px;"><br><br>
+    <input name="opt3" placeholder="Option 3" required style="width:100%; padding:8px;"><br><br>
+    <input name="opt4" placeholder="Option 4" required style="width:100%; padding:8px;"><br><br>
+    <label>Correct option number (1-4):</label>
+    <input name="correct" type="number" min="1" max="4" value="1" style="width:80px; padding:6px;"><br><br>
+    <label>Points:</label>
+    <input name="weight" type="number" min="1" value="1" style="width:80px; padding:6px;"><br><br>
+    <button class="btn-3d" type="submit">Add Question</button>
+  </form>
+  <p style="margin-top:12px;"><a href="/quizzes"><button class="btn-3d">Done / View Quizzes</button></a></p>
+</div>
+{% endblock %}
